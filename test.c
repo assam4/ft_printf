@@ -12,8 +12,8 @@ int main(void)
     printf("Returned: %d\n", ret);
     ret = ft_printf("Hexadecimal: %x\n", 255);
     printf("Returned: %d\n", ret);
-    ptr = &ret;
-    ret = ft_printf("Pointer: %p \n", NULL);
+    ptr = NULL;
+    ret = ft_printf("Pointer: %p \n", ptr);
     printf("Returned: %d\n", ret);
     ret = ft_printf("Character: %c\n", 'A');
     printf("Returned: %d\n", ret);
