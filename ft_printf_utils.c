@@ -4,12 +4,12 @@ int	print_string(const char *str, int fd)
 {
 	if (str)
 	{
-		ft_putstr_fd(str, fd);
+		ft_putstr_fd((char *)str, fd);
 		return (ft_strlen(str));
 	}
 	else
 	{
-		ft_putstr_fd("null", fd);
+		ft_putstr_fd("(null)", fd);
 		return (0);
 	}
 }
@@ -18,7 +18,6 @@ int	print_convert_number(unsigned long num, const char *base, int fd)
 {
 	size_t	base_len;
 	int		count;
-	char	letter;
 
 	base_len = ft_strlen(base);
 	count = 0;
@@ -31,7 +30,7 @@ int	print_convert_number(unsigned long num, const char *base, int fd)
 int	print_ptr(const void *pointer, int fd)
 {
 	if (!pointer)
-		return (print_string(pointer, fd));
+		return (print_string(NULL, fd));
 	else
 		return (print_string("0x", fd)
 			+ print_convert_number((unsigned long)pointer,

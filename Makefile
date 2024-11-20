@@ -11,7 +11,7 @@ CFLAGS = -Wall -Wextra -Werror -I. -I./libft
 AR = ar rcs
 
 
-SRC = ft_printf.c
+SRC = ft_printf.c ft_printf_utils.c
 
 OBJS = $(SRC:%.c=%.o)
 
@@ -20,8 +20,8 @@ LIBFT = ./libft/libft.a
 # GENERAL TARGET
 all: $(NAME)
 
-$(NAME) : $(LIBFT) $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+$(NAME) : $(LIBFT) $(OBJS) # linking objs and libft
+	$(AR) $(NAME) $(OBJS) # creating static library libftprintf.a
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

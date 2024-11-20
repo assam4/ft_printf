@@ -40,7 +40,6 @@ int	ft_printf(const char *format, ...)
 		{
 			++format;
 			size += ft_switch(*format, args, fd);
-			++format;
 		}
 		else
 		{
