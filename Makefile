@@ -19,10 +19,14 @@ LIBFT_OBJS = ft_isalnum.o ft_isprint.o ft_memcmp.o ft_putchar_fd.o ft_split.o ft
 	     ft_lstadd_front_bonus.o ft_lstclear_bonus.o ft_lstdelone_bonus.o ft_lstiter_bonus.o \
 	     ft_lstlast_bonus.o ft_lstmap_bonus.o ft_lstnew_bonus.o ft_lstsize_bonus.o
 
-all: $(NAME)
+all: $(LIBFT) $(NAME)
+
+$(LIBFT):
+	$(MAKE) -C libft
+	$(MAKE) -C libft bonus
 
 # make rules
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(LIBFT)
 	# unzip libft in project dir
 	ar x $(LIBFT)
 	# cat libft object and printf objects in archive
@@ -34,9 +38,11 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 clean:
 	rm -f $(OBJS)
+	$(MAKE) -C libft clean
 
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) -C libft fclean
 
 re: fclean all
 
