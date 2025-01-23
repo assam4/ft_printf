@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saslanya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/23 22:47:51 by saslanya          #+#    #+#             */
+/*   Updated: 2025/01/23 23:02:39 by saslanya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	print_string(const char *str, int fd)
@@ -47,7 +59,7 @@ int	print_ptr(const void *pointer, int fd)
 			+ print_convert_number2((unsigned long)pointer,
 				"0123456789abcdef", fd));
 	else
-		return (print_string("(nil)", fd));
+		return (print_string("0x0", fd));
 }
 
 int	print_unsigned(unsigned int number, int fd)
