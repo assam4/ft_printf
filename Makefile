@@ -4,7 +4,6 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./libft
 
 AR = ar rcs
-UNAR = ar x
 SRCS := ft_printf_utils.c ft_printf.c
 OBJS := $(SRCS:.c=.o)
 RM = rm -rf
@@ -21,18 +20,17 @@ LIBFT_OBJS = ft_isalnum.o ft_isprint.o ft_memcmp.o ft_putchar_fd.o ft_split.o ft
 all: $(LIBFT) $(NAME)
 
 $(LIBFT):
-							$(MAKE) -C libft bonus
+							$(MAKE) -C libft bonus 
+							mv $(LIBFT) .
+							$(MAKE) -C libft clean
 $(NAME): $(OBJS) $(LIBFT)
-							$(UNAR) $(LIBFT)
-							$(AR) $(NAME) $(OBJS) $(LIBFT_OBJS)
-							$(RM)  __.SYMDEF\ SORTED $(LIBFT_OBJS)
+							mv libft.a $(NAME)
+							$(AR) $(NAME) $(OBJS) 
 %.o: %.c ft_printf.h
 							$(CC) $(CFLAGS) -c $< -o $@
 clean:
 							$(RM) $(OBJS)
-							$(MAKE) -C libft clean
 fclean: clean
 							$(RM) $(NAME)
-							$(MAKE) -C libft fclean
 re: fclean all
 .PHONY: all clean fclean re
