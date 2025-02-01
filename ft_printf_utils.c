@@ -54,12 +54,9 @@ static int	print_convert_number2(unsigned long num, const char *base, int fd)
 
 int	print_ptr(const void *pointer, int fd)
 {
-	if (pointer)
-		return (print_string("0x", fd)
+	return (print_string("0x", fd)
 			+ print_convert_number2((unsigned long)pointer,
 				"0123456789abcdef", fd));
-	else
-		return (print_string("0x0", fd));
 }
 
 int	print_unsigned(unsigned int number, int fd)
